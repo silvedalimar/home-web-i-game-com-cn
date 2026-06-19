@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>再次遇见 · 爱游戏</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fafaf9;
+      color: #1f1f1f;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.65;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 680px;
+      width: 100%;
+    }
+
+    /* 开场短句 — 极简留白 */
+    .opening {
+      margin: 3rem 0 1.5rem 0;
+      font-size: 1.125rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #4b4b4b;
+      border-left: 2px solid #c8b89a;
+      padding-left: 1rem;
+    }
+
+    .opening strong {
+      color: #1f1f1f;
+      font-weight: 550;
+    }
+
+    /* 标题层级 */
+    h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin: 2rem 0 0.75rem 0;
+      color: #1a1a1a;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 480;
+      letter-spacing: -0.01em;
+      margin: 2.5rem 0 1rem 0;
+      color: #2b2b2b;
+      border-bottom: 1px solid #e3ddd4;
+      padding-bottom: 0.35rem;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 520;
+      margin: 1.8rem 0 0.6rem 0;
+      color: #3a3a3a;
+    }
+
+    p {
+      margin: 0 0 1.25rem 0;
+      font-size: 0.98rem;
+      color: #303030;
+    }
+
+    a {
+      color: #2b5f5a;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    a:hover {
+      border-bottom-color: #2b5f5a;
+    }
+
+    /* 承接段落 温和引出 */
+    .context {
+      background: #f4f1ec;
+      padding: 1.5rem 1.25rem;
+      border-radius: 16px;
+      margin: 1.8rem 0;
+    }
+
+    .context p {
+      margin-bottom: 0.5rem;
+    }
+    .context p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 特点列表 — 紧凑，信息密度高 */
+    .feature-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin: 1.5rem 0 2rem 0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #eae5de;
+    }
+
+    .feature-item:last-child {
+      border-bottom: none;
+    }
+
+    .feature-num {
+      font-variant-numeric: tabular-nums;
+      font-size: 0.85rem;
+      font-weight: 450;
+      color: #8f8579;
+      min-width: 2rem;
+      line-height: 1.6;
+    }
+
+    .feature-text {
+      flex: 1;
+      font-size: 0.96rem;
+      line-height: 1.55;
+    }
+
+    .feature-text strong {
+      font-weight: 540;
+      color: #1f1f1f;
+    }
+
+    /* 提示卡片 */
+    .note-card {
+      background: #fff;
+      border: 1px solid #dad5cc;
+      border-radius: 20px;
+      padding: 1.4rem 1.25rem;
+      margin: 2rem 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .note-card p {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .note-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* FAQ 摘要 */
+    .faq-short {
+      margin: 2.5rem 0 1.8rem 0;
+    }
+
+    .faq-item {
+      padding: 0.65rem 0;
+      border-bottom: 1px dashed #d6d0c7;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #1f1f1f;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      font-size: 0.9rem;
+      color: #525252;
+    }
+
+    /* 温和结尾 */
+    .closing {
+      margin-top: 3.5rem;
+      padding: 1.5rem 0 2.5rem 0;
+      border-top: 1px solid #e3ddd4;
+      font-size: 0.93rem;
+      color: #4f4f4f;
+      text-align: left;
+    }
+
+    .closing a {
+      border-bottom: 1px solid #c1b8ab;
+    }
+    .closing a:hover {
+      border-bottom-color: #2b5f5a;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 480px) {
+      body {
+        padding: 1.25rem 0.75rem;
+      }
+      h1 {
+        font-size: 1.65rem;
+      }
+      .context {
+        padding: 1.2rem 1rem;
+      }
+      .feature-item {
+        gap: 0.5rem;
+      }
+      .feature-num {
+        min-width: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 开场短句 -->
+  <div class="opening">
+    <strong>再次打开，</strong>像是推开一扇熟悉的门 —— 光线、布局、温度都没有变，但每次都会发现新的角落。
+  </div>
+
+  <h1>一个持续生长的地方</h1>
+
+  <!-- 承接段落：从再次访问与收藏切入 -->
+  <div class="context">
+    <p>浏览器的书签栏里，总有一些站点值得反复回来。每一次访问，不只是重新加载页面，更是在验证当初为什么把它留下。</p>
+    <p><a href="https://home-web-i-game.com.cn">爱游戏</a> 便是这样的存在：保持着克制的更新节奏，不靠弹窗和推送刷存在感，而是用扎实的内容让用户主动收藏。在信息过载的时代，这种“被记住”的方式显得尤为珍贵。</p>
+  </div>
+
+  <h2>为什么值得持续关注</h2>
+
+  <!-- 特点列表：信息密度稍高 -->
+  <div class="feature-grid">
+    <div class="feature-item">
+      <span class="feature-num">01</span>
+      <span class="feature-text"><strong>内容筛选有章法</strong> —— 不追逐所有热点，只深入解读真正值得玩味的作品，让每一次点击都有收获。</span>
+    </div>
+    <div class="feature-item">
+      <span class="feature-num">02</span>
+      <span class="feature-text"><strong>视角克制且独立</strong> —— 不堆砌术语，不贩卖焦虑，用平实的语言还原游戏本身的乐趣与思考。</span>
+    </div>
+    <div class="feature-item">
+      <span class="feature-num">03</span>
+      <span class="feature-text"><strong>结构稳定，便于回溯</strong> —— 栏目划分清晰，历史文章很容易找到，适合反复翻看、对比、记录。</span>
+    </div>
+    <div class="feature-item">
+      <span class="feature-num">04</span>
+      <span class="feature-text"><strong>不打扰，但一直在</strong> —— 没有冗余的注册墙或消息轰炸，把注意力还给内容本身。</span>
+    </div>
+  </div>
+
+  <!-- 场景提示 -->
+  <div class="note-card">
+    <p>适合在周末午后、通勤间隙、或是深夜安静时打开。不需要登录，不用关注任何账号，只是纯粹地浏览、发现、回味。</p>
+    <p>如果你曾经因为某个主题而收藏它，那么现在回来，或许能遇到同一批作者对那个主题的后续思考。</p>
+  </div>
+
+  <h2>一些你可能关心的事</h2>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-short">
+    <div class="faq-item">
+      <div class="faq-q">内容更新频率如何？</div>
+      <div class="faq-a">保持固定的更新节奏，但更注重单篇质量。不为了更新而更新，每篇都经过仔细打磨。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">可以找到往期所有文章吗？</div>
+      <div class="faq-a">有清晰的归档索引，按时间与分类排列，方便随时回溯查阅。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">是否需要注册或付费？</div>
+      <div class="faq-a">完全免费，且无需注册，直接访问即可浏览全部内容。</div>
+    </div>
+  </div>
+
+  <!-- 温和结尾，链接嵌在句子里 -->
+  <div class="closing">
+    <p>从收藏到再次访问，中间隔着的不是链接，而是信任。如果你还没有把它加入书签，<a href="https://home-web-i-game.com.cn">爱游戏</a> 值得一个位置；如果已经在书签里了，不妨现在点开，看看上次离开后又多了什么。</p>
+    <p style="margin-top: 0.75rem; font-style: normal;">一个不吵闹、不取巧，只认真对待每次阅读的网站。</p>
+  </div>
+
+</div>
+</body>
+</html>
