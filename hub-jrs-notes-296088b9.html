@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>故事的起点 · JRS直播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f9fc;
+            color: #1a2b34;
+            line-height: 1.7;
+            padding: 0 1.5rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .wrapper {
+            max-width: 780px;
+            width: 100%;
+        }
+
+        /* 故事开场 —— 蓝绿色调舒缓叙事 */
+        .story-hero {
+            margin: 3rem 0 2.2rem;
+            padding: 2rem 1.2rem 1.8rem;
+            background: linear-gradient(145deg, #e0f0f5 0%, #cbe7ed 100%);
+            border-radius: 32px;
+            box-shadow: 0 6px 14px rgba(46, 139, 128, 0.08);
+            text-align: center;
+            position: relative;
+        }
+
+        .story-hero::before {
+            content: "⚡";
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            opacity: 0.5;
+        }
+
+        .story-hero h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #0f4d4a;
+        }
+
+        .story-hero .tagline {
+            font-size: 1rem;
+            color: #2d6f6a;
+            background: rgba(255,255,255,0.55);
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            margin-top: 0.6rem;
+            backdrop-filter: blur(2px);
+        }
+
+        /* 承接段落 — 温和知识型 */
+        .passage {
+            background: white;
+            padding: 1.8rem 1.5rem;
+            border-radius: 28px;
+            box-shadow: 0 4px 12px rgba(0,40,35,0.04);
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(168, 207, 199, 0.3);
+        }
+
+        .passage p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .passage p:last-child {
+            margin-bottom: 0;
+        }
+
+        .passage strong {
+            color: #1b7a72;
+            font-weight: 500;
+        }
+
+        .inline-link {
+            color: #0b6d64;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #b2dbd3;
+            padding-bottom: 1px;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #0b6d64;
+            background: #e1f2ee;
+        }
+
+        /* 网格卡片 —— 蓝绿点缀 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2.4rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.4rem 1rem 1.2rem;
+            box-shadow: 0 2px 10px rgba(34, 116, 106, 0.06);
+            border-left: 5px solid #459e92;
+            transition: transform 0.15s ease, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(34, 116, 106, 0.10);
+        }
+
+        .feature-card .card-num {
+            font-size: 0.75rem;
+            color: #6d9f96;
+            letter-spacing: 1px;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #11544e;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #2c4b46;
+            line-height: 1.5;
+        }
+
+        /* 场景小段落 —— 蓝绿点缀 */
+        .scene-note {
+            background: #e2f0ed;
+            border-radius: 28px;
+            padding: 1.6rem 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #bdd9d3;
+        }
+
+        .scene-note p {
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .scene-note .small-meta {
+            font-size: 0.85rem;
+            color: #3a7169;
+            background: #d0e6e1;
+            display: inline-block;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+        }
+
+        /* 温和结尾 + 微小FAQ摘要 */
+        .gentle-outro {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,50,45,0.02);
+            border: 1px solid #cde1db;
+            margin-bottom: 1.8rem;
+        }
+
+        .gentle-outro h2 {
+            font-size: 1.2rem;
+            font-weight: 450;
+            color: #125851;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .faq-mini {
+            margin: 0.8rem 0 0.2rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .faq-mini li {
+            padding: 0.7rem 0;
+            border-bottom: 1px dashed #d0e2dd;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .faq-mini li:last-child {
+            border-bottom: none;
+        }
+
+        .faq-mini .q {
+            font-weight: 450;
+            color: #16685f;
+            min-width: 5.2rem;
+        }
+
+        .faq-mini .a {
+            color: #2a4f49;
+        }
+
+        .footnote {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #52847b;
+            letter-spacing: 0.3px;
+            border-top: 1px solid #d1e3de;
+            padding-top: 1.2rem;
+        }
+
+        .footnote a {
+            color: #0b6d64;
+            text-decoration: none;
+            border-bottom: 1px solid #aacdc5;
+        }
+
+        /* 移动端友好 */
+        @media (max-width: 540px) {
+            body {
+                padding: 0 1rem 2rem;
+            }
+            .story-hero h1 {
+                font-size: 1.6rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+            .feature-card {
+                padding: 1.2rem 1rem;
+            }
+            .passage, .scene-note, .gentle-outro {
+                padding: 1.3rem 1rem;
+            }
+            .faq-mini li {
+                flex-wrap: wrap;
+            }
+            .faq-mini .q {
+                min-width: auto;
+                margin-right: 0.6rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .story-hero {
+                padding: 1.4rem 0.8rem;
+            }
+            .story-hero h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 开场短句 -->
+        <div class="story-hero">
+            <h1>当体育赛事的脉搏<br>从屏幕里传来</h1>
+            <span class="tagline">一段关于观看与连接的叙述</span>
+        </div>
+
+        <!-- 承接段落：从关键词背后的主题展开 -->
+        <div class="passage">
+            <p>如果回溯“直播”二字的原初场景，它总与「正在发生」的张力有关。竞技场上每一次进攻、每一次扑救，都乘着数据流抵达另一端的眼睛。而体育观众所寻找的，往往不只是实时画面，更是一种共同在场的仪式感——知道此刻有无数人同时屏住呼吸，这本身就让观看变得深沉。</p>
+            <p>围绕这样的需求，许多平台逐渐搭建起自己的转播脉络。其中，<strong><a href="https://hub-jrs.com" class="inline-link">JRS直播</a></strong> 以聚合式索引的方式，将各类赛事信号梳理为便于浏览的列表。它不生产比赛，而是作为一扇安静的窗口，帮助使用者更快定位到自己关注的联赛、队伍或时段。纯粹、直接，几乎不施加多余的叙事干扰。</p>
+        </div>
+
+        <!-- 特点列表：网格卡片 -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="card-num">01 频道索引</span>
+                <h3>多联赛覆盖</h3>
+                <p>足球、篮球以及更多主流联赛与杯赛，以清晰目录呈现，减少寻找信号的步骤。</p>
+            </div>
+            <div class="feature-card">
+                <span class="card-num">02 界面逻辑</span>
+                <h3>低干扰浏览</h3>
+                <p>没有过度装饰的页面，重点落在比赛标题与时间上，让信息自己说话。</p>
+            </div>
+            <div class="feature-card">
+                <span class="card-num">03 适配习惯</span>
+                <h3>移动优先</h3>
+                <p>手机端与平板同样保持易读布局，在通勤或小屏幕上也能快速浏览。</p>
+            </div>
+            <div class="feature-card">
+                <span class="card-num">04 直播特性</span>
+                <h3>实时更新</h3>
+                <p>赛程变动或临时加场时，列表会同步调整，尽量避免滞后带来的困扰。</p>
+            </div>
+        </div>
+
+        <!-- 场景小段落 -->
+        <div class="scene-note">
+            <p>🌿 某个周末的傍晚，你打开收藏夹里熟悉的地址，列表里正好显示出即将开赛的场次。没有弹窗，没有浮夸的倒计时，只有一行干净的标题和开始时间。这种克制的编排，让看球这件事回归到最本来的面貌：<strong>找一场比赛，然后安静地看。</strong></p>
+            <span class="small-meta">▸ 观赛前建议确保网络稳定</span>
+        </div>
+
+        <!-- 温和结尾 + FAQ摘要 -->
+        <div class="gentle-outro">
+            <h2>一些微小但常被问起的事</h2>
+            <ul class="faq-mini">
+                <li><span class="q">内容来源？</span><span class="a">平台聚合公开索引，具体信号由各转播方提供，建议搭配官方渠道验证。</span></li>
+                <li><span class="q">是否需要注册？</span><span class="a">直接浏览即可，不要求创建账户，也无需下载额外程序。</span></li>
+                <li><span class="q">遇上空白或卡顿？</span><span class="a">可尝试刷新页面或检查网络；部分时段信号源可能出现临时波动。</span></li>
+            </ul>
+            <div class="footnote">
+                一个指向赛事信息的安静入口 · <a href="https://hub-jrs.com">JRS直播</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
