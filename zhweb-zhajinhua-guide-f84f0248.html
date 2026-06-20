@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炸金花 · 规则与说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafaf9;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1a1a1a;
+            line-height: 1.65;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2.4rem 1.6rem 3.2rem;
+        }
+
+        /* --- hero --- */
+        .hero {
+            padding: 3.6rem 0 2.2rem;
+            text-align: center;
+        }
+
+        .hero__tag {
+            font-size: 0.8rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #a2a2a2;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero__title {
+            font-size: 2.8rem;
+            font-weight: 450;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: #1c1c1c;
+        }
+
+        .hero__sub {
+            margin-top: 0.8rem;
+            font-size: 1rem;
+            color: #5f5f5f;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero__sub a {
+            color: #1a1a1a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            transition: color 0.15s;
+        }
+
+        .hero__sub a:hover {
+            color: #4d7a6b;
+        }
+
+        /* 分隔 */
+        .hr-light {
+            border: 0;
+            border-top: 1px solid #e4e4e2;
+            margin: 2.4rem 0 2.8rem;
+            width: 100%;
+        }
+
+        /* 章节 */
+        .section {
+            margin-bottom: 2.8rem;
+        }
+
+        .section__label {
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            color: #b0aea9;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .section__heading {
+            font-size: 1.4rem;
+            font-weight: 480;
+            letter-spacing: -0.01em;
+            color: #222;
+            margin-bottom: 1.2rem;
+        }
+
+        .section p {
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            color: #3a3a3a;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section a {
+            color: #1a1a1a;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            transition: color 0.15s;
+        }
+
+        .section a:hover {
+            color: #4d7a6b;
+        }
+
+        /* 优势卡片（极简） */
+        .advantage-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.6rem;
+            margin: 1.2rem 0 0.6rem;
+        }
+
+        .advantage-card {
+            flex: 1 1 180px;
+            background: #ffffff;
+            border: 1px solid #ecebe9;
+            border-radius: 0;
+            padding: 1.6rem 1.2rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .advantage-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .advantage-card__title {
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.01em;
+        }
+
+        .advantage-card p {
+            font-size: 0.9rem;
+            color: #5c5c5c;
+            margin-bottom: 0;
+        }
+
+        /* FAQ 摘要 */
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #efeeec;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+            color: #232323;
+        }
+
+        .faq-a {
+            font-size: 0.88rem;
+            color: #595959;
+            line-height: 1.55;
+        }
+
+        .faq-a a {
+            color: #1a1a1a;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .faq-a a:hover {
+            color: #4d7a6b;
+        }
+
+        /* 底部 */
+        .footer-links {
+            margin-top: 3.2rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid #e4e4e2;
+            font-size: 0.85rem;
+            color: #6b6b6b;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 2rem;
+        }
+
+        .footer-links a {
+            color: #3a3a3a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .footer-links a:hover {
+            border-bottom-color: #1a1a1a;
+        }
+
+        .footer-copy {
+            margin-top: 1.2rem;
+            font-size: 0.78rem;
+            color: #9b9b9b;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            .hero__title {
+                font-size: 2.1rem;
+            }
+            .page {
+                padding: 1.8rem 1.2rem 2.4rem;
+            }
+            .advantage-grid {
+                gap: 1rem;
+            }
+            .advantage-card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- hero -->
+        <div class="hero">
+            <div class="hero__tag">· 规则与说明 ·</div>
+            <h1 class="hero__title">炸金花 · 稳定入口</h1>
+            <p class="hero__sub">
+                作为经典牌类项目，<a href="https://zhweb--zhajinhua.com">炸金花</a> 因其清晰的比牌逻辑与博弈节奏，一直吸引着大量玩家。<br>本页从页面结构与稳定访问的角度，梳理核心信息。
+            </p>
+        </div>
+
+        <hr class="hr-light">
+
+        <!-- 优势区：为什么这个页面值得看 -->
+        <div class="section">
+            <div class="section__label">· 优势 ·</div>
+            <div class="advantage-grid">
+                <div class="advantage-card">
+                    <div class="advantage-card__title">直接入口</div>
+                    <p>页面顶部即提供指向 <a href="https://zhweb--zhajinhua.com">炸金花</a> 的稳定链接，无需中间跳转，减少路径损耗。</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-card__title">规则说明</div>
+                    <p>花牌、豹子、顺金、金花、顺子、对子、散牌 —— 所有牌型均按传统定义，不引入额外变体，保持原貌。</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-card__title">无诱导</div>
+                    <p>不包含夸张承诺或诱导性语句。每个介绍均基于实际体验与公开规则整理。</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-card__title">窄体排版</div>
+                    <p>正文宽度控制在 720px 以内，行距、字号以阅读舒适为第一优先级。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 说明区：切入角度“稳定入口 + 页面说明” -->
+        <div class="section">
+            <div class="section__label">· 说明 ·</div>
+            <h2 class="section__heading">关于炸金花的页面结构与访问</h2>
+            <p>
+                对经常参与 <a href="https://zhweb--zhajinhua.com">炸金花</a> 的玩家来说，一个干净、直达的页面比什么都重要。本介绍页不承载游戏功能，而是作为信息索引：它汇总了基本规则、常见问题，以及最重要的——一个始终保持不变的链接地址。
+            </p>
+            <p>
+                炸金花（又称“炸鸡”、“三张牌”）的核心在于玩家的判断力与心理博弈。牌型大小顺序从高到低为：豹子 &gt; 顺金 &gt; 金花 &gt; 顺子 &gt; 对子 &gt; 散牌。特殊牌型如 2-3-5 在某些规则中可压豹子，但多数场合沿用经典排序。
+            </p>
+            <p>
+                页面中的链接皆指向同一地址，文本统一为「炸金花」，不添加“官网”、“入口”等多余词汇，便于收藏夹与记忆。任何时刻打开本页，均能通过顶部或内文链接直接定位。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="section">
+            <div class="section__label">· 常见问题 ·</div>
+            <h2 class="section__heading">FAQ 摘要</h2>
+
+            <div class="faq-item">
+                <div class="faq-q">炸金花中“235”能赢豹子吗？</div>
+                <div class="faq-a">不同地区规则存在差异。多数房间将“235”视为特殊组合，可压豹子；但也有部分规则不采纳此变体。建议在对局前确认当前规则。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">页面访问不稳定怎么办？</div>
+                <div class="faq-a">本页为静态页面，依赖 GitHub Pages 分发。若遇到无法加载，可稍后重试或直接使用 <a href="https://zhweb--zhajinhua.com">炸金花</a> 原始链接。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">为什么推荐使用这个页面作为入口？</div>
+                <div class="faq-a">因为该页面内容固定、无外部脚本，且长期指向同一地址。适合用作书签或个人收藏中的稳定锚点。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">牌型“顺金”和“金花”哪个大？</div>
+                <div class="faq-a">顺金（同花顺）大于金花。顺金即花色相同且点数连续，例如黑桃 5-6-7。金花仅要求花色一致，点数不必连续。</div>
+            </div>
+        </div>
+
+        <!-- 底部链接 -->
+        <div class="footer-links">
+            <a href="https://zhweb--zhajinhua.com">炸金花</a>
+            <span>· 规则参考 · 2025</span>
+        </div>
+        <div class="footer-copy">
+            本页仅作信息整理，不涉及任何游戏运营或引导。
+        </div>
+
+    </div>
+</body>
+</html>
